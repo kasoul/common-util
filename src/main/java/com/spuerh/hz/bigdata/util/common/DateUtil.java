@@ -57,11 +57,11 @@ public class DateUtil {
 	/**
 	 * 获取毫秒数
 	 */
-	public static long getDateTimestamp(String yyyymmddhhmiss)
+	public static long getDateTimestamp(String yyyyMMddhhmiss)
 	{	
 		long timestamp = 0;
 		try {
-			timestamp = sdf_yyyyMMddhhmmss.parse(yyyymmddhhmiss).getTime();
+			timestamp = sdf_yyyyMMddhhmmss.parse(yyyyMMddhhmiss).getTime();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,7 +71,7 @@ public class DateUtil {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(getDateTimestamp("20160505220000"));
+		System.out.println(getDateTimestamp("20161505220000"));
 		System.out.println(getDateTimestamp("20160506000000"));
 	}
 

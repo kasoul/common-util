@@ -109,13 +109,15 @@ public class PropertyUtil {
 		return configmap;
 	}
 	
-	/*
+	/**
 	 * this.getClass().getResource("");  //获取到包路径
-	this.getClass().getResource("/").getPath();  //获取到classpath：bin路径
-	path2 = java.net.URLDecoder.decode(path2,"utf-8");  //处理中文乱码
-   */  
+	 *	this.getClass().getResource("/").getPath();  //获取到classpath：bin路径
+	 *	path2 = java.net.URLDecoder.decode(path2,"utf-8");  //处理中文乱码
+     */  
 	public static void main(String[] args) {
 		System.out.println(PropertyUtil.getJarPath());
+		System.out.println(PropertyUtil.class.getResource("/").getPath());
+		System.out.println(PropertyUtil.class.getClassLoader().getResourceAsStream("conf"));
 	}
 
 }
