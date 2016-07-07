@@ -3,15 +3,18 @@ package com.spuerh.hz.bigdata.util.secure;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- *  加密工具类
- *  2016-6-8
+ *  @Describe:加密工具
  */
 public class EncryptUtil {
-	
+
+	private static final Logger logger = LoggerFactory.getLogger(EncryptUtil.class);
 	
 	/**
+	 * MD5加密函数
 	 * @param source源字符串 type加密类型(MD5,SHA)
 	 * @return
 	 */
@@ -26,7 +29,9 @@ public class EncryptUtil {
 	      }
 	      return sb.toString();
 	    } catch (NoSuchAlgorithmException e) {
+	      logger.error(e.getMessage());
 	      return null;
 	    }
 	}
+
 }
