@@ -1,6 +1,6 @@
 package com.spuerh.hz.util.dbtool;
 
-import com.spuerh.hz.bigdata.util.dbtool.MySqlUtil;
+import com.spuerh.hz.common.util.dbtool.MySqlUtil;
 
 /**
  * 功能说明：

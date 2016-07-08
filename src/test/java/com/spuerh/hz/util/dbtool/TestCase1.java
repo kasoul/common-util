@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.spuerh.hz.bigdata.util.config.PropertyUtil;
-import com.spuerh.hz.bigdata.util.dbtool.MySqlOpration;
+import com.spuerh.hz.common.util.config.PropertyUtil;
+import com.spuerh.hz.common.util.dbtool.MySqlOpration;
 
 
 /**
