@@ -227,6 +227,22 @@ public class BaiduMapApiUtil
     	}
     }
     
+    /**
+	 * 将经纬度的小数点后4位的数字截断
+	 * @param String coordinate
+	 * @return String coordinate
+	 */
+	public static String coordinatePrecision(String coordinate)
+	{
+		String[] coordSplit = coordinate.split(",");
+		if (coordSplit.length != 2)
+			return null;
+		String lng = coordSplit[0];
+		String lat = coordSplit[1];
+		return lng.substring(0, Math.min(lng.indexOf(".") + 7, lng.length())) + "," + 
+			   lat.substring(0, Math.min(lat.indexOf(".") + 7, lat.length()));
+	}
+    
     public static void main(String[] args) {
     	System.out.println(BaiduMapApiUtil.getLongitudeAndLatitude("浙江省杭州市xh区"));
     }

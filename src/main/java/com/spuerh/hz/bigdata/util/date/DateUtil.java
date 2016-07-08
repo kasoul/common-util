@@ -1,4 +1,4 @@
-package com.spuerh.hz.bigdata.util.common;
+package com.spuerh.hz.bigdata.util.date;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
