@@ -112,23 +112,6 @@ public class LunarConvertor {
 			{ 32, 0, 1, 31, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0 },
 			{ 22, 3, 2, 36, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0 } };
 
-	private static String dateToStr(Date d, int type) {
-		
-		String s = "";
-		SimpleDateFormat sdf = null;
-		switch (type) {
-		case 1:
-			sdf = new SimpleDateFormat("yyyy-MM-dd");
-		case 2:
-			sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		case 3:
-			sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		}
-		s = sdf.format(d);
-		return s;
-		
-	}
-
 	/**
 	 * 根据阴历取得对应的阳历日期（该日期必须在1936—2028年之间）
 	 * 
@@ -164,6 +147,26 @@ public class LunarConvertor {
 		return s;
 
 	}
+	
+	
+	private static String dateToStr(Date d, int type) {
+		
+		String s = "";
+		SimpleDateFormat sdf = null;
+		switch (type) {
+		case 1:
+			sdf = new SimpleDateFormat("yyyy-MM-dd");
+		case 2:
+			sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		case 3:
+			sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		}
+		s = sdf.format(d);
+		return s;
+		
+	}
+
+	
 
 	private static Date getGregorianCalendar(String date) {
 		Calendar c = getCalendar(date);

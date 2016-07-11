@@ -11,9 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ * 公历法定节日判断工具
  */
-
 public class ChinaFestivalUtil {
 	
 	private final static Logger logger = LoggerFactory.getLogger(ChinaFestivalUtil.class);

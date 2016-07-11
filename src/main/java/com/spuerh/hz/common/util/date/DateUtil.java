@@ -63,8 +63,7 @@ public class DateUtil {
 		try {
 			timestamp = sdf_yyyyMMddhhmmss.parse(yyyyMMddhhmiss).getTime();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e.getMessage());
 		}
 		
 		return timestamp;
