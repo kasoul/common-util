@@ -1,20 +1,29 @@
 package com.spuerh.hz.common.util.file;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.spuerh.hz.common.util.config.PropertyUtil;
 
 /**
  * 功能说明： 对文件系统上的文件 和目录操作
  * 2014-12-10
  */
 public class FileTool {
+	
+	private static final Logger log = LoggerFactory.getLogger(FileTool.class);
 	
 	 /** 
      * 根据dir_path_file，获取真实文件，而非目录
@@ -90,11 +99,43 @@ public class FileTool {
 	/** 
      * 读取文件数据，每行转化为一个String
      * 处理空白字符串
+     * @param File dirFile
+     * @return List<String>，或null
+     */  
+	public static String getBytesFromFile(File file ){
+		String fileContent = new String();
+		try {
+			InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+			byte[] bytes = new byte[1024];
+			int length = inputStream.read(bytes);
+			//System.out.println("the length of bytes is " + length);
+			fileContent = new String(bytes,0,length,"gbk");
+			//System.out.println("the length of string is " + fileContent.length());
+			inputStream.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return fileContent;
+	}
+	
+	/** 
+     * 读取文件数据，每行转化为一个String
+     * 处理空白字符串
      * @param String filepath:路径文件名
      * @return List<String>，或null
      */  
 	public static List<String> getContentFromFile(String filepath){
 		File file = new File(filepath);
 		return getContentFromFile(file);
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(
+				getBytesFromFile(
+						new File("C:\\Users\\Administrator\\Desktop\\testdata\\test-io.txt")));
 	}
 }

@@ -110,7 +110,7 @@ public class PropertyUtil {
 	}
 	
 	/**
-	 * this.getClass().getResource("");  //获取到包路径
+	 * 	this.getClass().getResource("");  //获取到包路径
 	 *	this.getClass().getResource("/").getPath();  //获取到classpath：bin路径
 	 *	path2 = java.net.URLDecoder.decode(path2,"utf-8");  //处理中文乱码
      */  
