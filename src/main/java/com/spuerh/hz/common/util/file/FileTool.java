@@ -15,7 +15,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.spuerh.hz.common.util.config.PropertyUtil;
 
 /**
  * 功能说明： 对文件系统上的文件 和目录操作
@@ -50,7 +49,6 @@ public class FileTool {
 		if(dirFile.isDirectory()){
 			File[] files = dirFile.listFiles(new FilenameFilter() {
 
-				@Override
 				//设置文件名过滤器，获取指定文件名的文件
 				public boolean accept(File dir, String name) {
 					//if (name.endsWith(".dat")) {
@@ -94,6 +92,36 @@ public class FileTool {
 			e.printStackTrace();
 		}
 		return fileContent;
+	}
+	
+	/** 
+     * 读取文件数据，转化为一个String
+     * @param File dirFile
+     * @return String，或null
+     */  
+	public static String getStringFromFile(File file ){
+		StringBuffer fileContent = new StringBuffer();
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
+			//BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line = reader.readLine();
+			while (line != null) {
+				fileContent.append(line + "\n");
+				line = reader.readLine();
+			}
+			reader.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(fileContent.length() != 0){
+			return fileContent.toString().substring(0, fileContent.length()-1);
+		}else{
+			return null;
+		}
 	}
 	
 	/** 
