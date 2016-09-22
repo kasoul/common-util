@@ -15,25 +15,23 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 /**
  * 功能说明： 对文件系统上的文件 和目录操作
- * 2014-12-10
  */
 public class FileTool {
 	
-	private static final Logger log = LoggerFactory.getLogger(FileTool.class);
+	private static final Logger logger = LoggerFactory.getLogger(FileTool.class);
 	
 	 /** 
      * 根据dir_path_file，获取真实文件，而非目录
+     * 
      * @param dir_path_file 文件系统下的路径文件名，绝对路径
      * @return 返回真实file，或null
      */  
 	public static File getTrueFile(String dir_path_file){
 		File dirFile = new File(dir_path_file);
 		if (!dirFile.exists() || dirFile.isDirectory()) {
-			System.err.println("the dir paht '" + dir_path_file
-					+ "' is not exist or it is not a directory,please check!");
+			logger.info("the dir path '{}' is not exist or it is not a directory,please check!",dir_path_file);
 			return null;
 		}else{
 			return dirFile;
@@ -42,6 +40,7 @@ public class FileTool {
 	
 	/** 
      * 递归遍历一个目录下的所有真实文件
+     * 
      * @param File dirFile, List<File> fileList
      * @return 返回真实file，或null
      */  
@@ -70,6 +69,7 @@ public class FileTool {
 	/** 
      * 读取文件数据，每行转化为一个String
      * 处理空白字符串
+     * 
      * @param File dirFile
      * @return List<String>，或null
      */  
@@ -85,17 +85,16 @@ public class FileTool {
 			}
 			reader.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("file not found!",e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("io exception",e);
 		}
 		return fileContent;
 	}
 	
 	/** 
      * 读取文件数据，转化为一个String
+     * 
      * @param File dirFile
      * @return String，或null
      */  
@@ -111,11 +110,9 @@ public class FileTool {
 			}
 			reader.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("file not found!",e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("io exception",e);
 		}
 		if(fileContent.length() != 0){
 			return fileContent.toString().substring(0, fileContent.length()-1);
@@ -127,6 +124,7 @@ public class FileTool {
 	/** 
      * 读取文件数据，每行转化为一个String
      * 处理空白字符串
+     * 
      * @param File dirFile
      * @return List<String>，或null
      */  
@@ -141,11 +139,9 @@ public class FileTool {
 			//System.out.println("the length of string is " + fileContent.length());
 			inputStream.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("file not found!",e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("io exception",e);
 		}
 		return fileContent;
 	}
@@ -153,6 +149,7 @@ public class FileTool {
 	/** 
      * 读取文件数据，每行转化为一个String
      * 处理空白字符串
+     * 
      * @param String filepath:路径文件名
      * @return List<String>，或null
      */  
@@ -163,7 +160,6 @@ public class FileTool {
 	
 	public static void main(String[] args) {
 		System.out.println(
-				getBytesFromFile(
-						new File("C:\\Users\\Administrator\\Desktop\\testdata\\test-io.txt")));
+				getTrueFile("C:\\Users\\Administrator\\Desktop\\testdata\\test-io3.txt"));
 	}
 }
