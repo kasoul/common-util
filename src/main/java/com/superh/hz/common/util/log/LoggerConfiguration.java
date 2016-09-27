@@ -2,6 +2,7 @@ package com.superh.hz.common.util.log;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 /** 
  * 2015-6-15
@@ -9,6 +10,19 @@ import org.apache.log4j.Logger;
 public class LoggerConfiguration
 {	
 	private static Logger log = Logger.getLogger(LoggerConfiguration.class);
+	
+	/**
+	 * 重载log4j配置文件，可使用项目外部配置
+	 * @param String log4jPath, log4j文件
+	 */
+	public static void reLoadLogProperties(String log4jFile){
+		PropertyConfigurator.configure(log4jFile);
+	}
+	
+	/**
+	 * 设置日志等级
+	 * @param String level, 日志等级
+	 */
 	public static void setLoggerLevel(String level)
 	{
 		switch (level)
