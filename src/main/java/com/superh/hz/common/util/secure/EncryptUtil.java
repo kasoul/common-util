@@ -15,8 +15,8 @@ public class EncryptUtil {
 	
 	/**
 	 * MD5加密函数
-	 * @param source源字符串 type加密类型(MD5,SHA)
-	 * @return
+	 * @param String:source源字符串, type加密类型(MD5,SHA)
+	 * @return String:密文
 	 */
 	public static String encrypt(String source, String type) {
 		StringBuilder sb = new StringBuilder();

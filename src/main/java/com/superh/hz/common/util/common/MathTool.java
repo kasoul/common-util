@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class MathTool {
 	
+	/** 求和 */
 	public static double sum(List<Double> numbers){
 		double sum = 0.0;
 		for(double number: numbers){
@@ -17,6 +18,7 @@ public class MathTool {
 		return sum;
 	}
 	
+	/** 求平均值 */
 	public static double avrage(List<Double> numbers){
 		if(numbers.size()==0||numbers==null){
 			return 0;
@@ -24,6 +26,7 @@ public class MathTool {
 		return sum(numbers)/numbers.size();
 	}
 
+	/** 求方差 */
 	public static double variance(List<Double> numbers){
 		if(numbers.size()==0||numbers==null){
 			return 0;

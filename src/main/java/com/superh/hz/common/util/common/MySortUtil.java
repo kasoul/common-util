@@ -21,7 +21,8 @@ public class MySortUtil{
 	
 	/** 
      * 冒泡排序
-     * @param List<T> list，Comparator<T> comparator
+     * @param List<T> list，待排序列表
+     * @param Comparator<T> comparator，比较器
      */ 
 	public static <T> void bubbleSort(List<T> list,Comparator<T> comparator){
 		int maxindex = list.size()-1;
@@ -46,7 +47,8 @@ public class MySortUtil{
 	
 	/** 
      * 选择排序
-     * @param List<T> list，Comparator<T> comparator
+     * @param List<T> list，待排序列表
+     * @param Comparator<T> comparator，比较器
      */ 
 	public static <T> void selectSort(List<T> list,Comparator<T> comparator){
 		int size = list.size();
@@ -70,7 +72,8 @@ public class MySortUtil{
 	
 	/** 
      * 快速排序
-     * @param List<T> list，Comparator<T> comparator
+     * @param List<T> list，待排序列表
+     * @param Comparator<T> comparator，比较器
      */ 
 	public static <T> void quickSort(List<T> list,Comparator<T> comparator){
 		quickSort(list,0,list.size()-1,comparator);
@@ -109,7 +112,8 @@ public class MySortUtil{
 	
 	/** 
      * 堆排序
-     * @param List<T> list，Comparator<T> comparator
+     * @param List<T> list，待排序列表
+     * @param Comparator<T> comparator，比较器
      */ 
 	private static <T> void heapSort(List<T> list,Comparator<T> comparator){
 		int heapsize = list.size();       //集合中元素的个数
@@ -133,7 +137,10 @@ public class MySortUtil{
 	/** 
      * 堆排序：构建堆，让根节点成为最大节点
      * 堆的核心思想是：先序遍历转化为二叉树
-     * @param List<T> list，Comparator<T> comparator
+     * @param List<T> list，待排序列表
+     * @param int father，父节点下标
+     * @param int heapsize，堆大小
+     * @param Comparator<T> comparator，比较器
      */ 
 	private static <T> void heapify(List<T> list, int father, int heapsize,Comparator<T> comparator) {
 		int leftchild = 2 * father + 1;  // 左孩子的下标（如果存在的话）
