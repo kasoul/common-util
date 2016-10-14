@@ -1,13 +1,5 @@
 package com.superh.hz.common.util.dbtool;
 
-/**
- * 功能说明：mysql数据库连接和操作
- * 成员属性
- * 成员方法：getConnection()，获取连接；getStatement()，获取声明；query(String sql) 查询数据
- * 2014-08-12
- * @update   
- */
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -15,7 +7,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+/**
+ * 功能说明：mysql数据库连接和操作
+ */
 public class MySqlOpration {
+
+	private static final Logger logger = LoggerFactory.getLogger(MySqlOpration.class);
 
 	public String url = null;
 	public String username = null;
@@ -25,8 +26,12 @@ public class MySqlOpration {
 	/**
 	 * 构造方法设置连接参数
 	 * 
-	 * @param url地址
-	 *            ，username用户名，password方法
+	 * @param url
+	 *            String,地址
+	 * @param username
+	 *            String,用户名
+	 * @param password
+	 *            String,密码
 	 */
 	public MySqlOpration(String url, String username, String password) {
 		this.url = url;
@@ -38,8 +43,6 @@ public class MySqlOpration {
 	/**
 	 * 构造方法设置连接参数
 	 * 
-	 * @param url地址
-	 *            ，username用户名，password方法
 	 */
 	public MySqlOpration() {
 		this.url = "127.0.0.1";
@@ -51,8 +54,12 @@ public class MySqlOpration {
 	/**
 	 * 设置连接参数
 	 * 
-	 * @param url地址
-	 *            ，username用户名，password方法
+	 * @param url
+	 *            String,地址
+	 * @param username
+	 *            String,用户名
+	 * @param password
+	 *            String,密码
 	 */
 	@Deprecated
 	public void setConnectionParam(String url, String username, String password) {
@@ -71,7 +78,7 @@ public class MySqlOpration {
 			con = DriverManager.getConnection(url, username, password);// 创建数据连接
 
 		} catch (Exception e) {
-			System.out.println("数据库连接失败" + e.getMessage());
+			logger.error("mysql connect failed.", e);
 		}
 		return con; // 返回所建立的数据库连接
 	}
@@ -88,13 +95,12 @@ public class MySqlOpration {
 			con = DriverManager.getConnection(url, username, password);// 创建数据连接
 
 		} catch (Exception e) {
-			System.out.println("数据库连接失败" + e.getMessage());
+			logger.error("mysql connect failed.", e);
 		}
 		try {
 			st = (Statement) con.createStatement();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("statement creat failed.", e);
 		}
 		return st;
 	}
@@ -107,21 +113,20 @@ public class MySqlOpration {
 			con = DriverManager.getConnection(url, username, password);// 创建数据连接
 
 		} catch (Exception e) {
-			System.out.println("数据库连接失败" + e.getMessage());
+			logger.error("mysql connect failed.", e);
 		}
 		try {
 			stmt = (Statement) con.createStatement();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("statement creat failed.", e);
 		}
 	}
 
 	/**
 	 * 查询方法
 	 * 
-	 * @param String
-	 *            sql语句
+	 * @param sql
+	 *            String,sql语句
 	 */
 	public ResultSet query(String sql) {
 		ResultSet rt = null;
@@ -129,80 +134,78 @@ public class MySqlOpration {
 		try {
 			rt = stmt.executeQuery(sql);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("query sql execute failed.", e);
 		}
 		return rt;
 	}
 
 	/**
-	 * 插入数据记录，并输出插入的数据记录数
+	 * 插入数据记录，并返回插入的数据记录数
 	 * 
-	 * @param String
-	 *            sql语句
+	 * @param sql
+	 *            String,sql语句
 	 */
-	public void insert(String sql) {
-		// Statement st = getStatement();
+	public int insert(String sql) {
+		int count = 0;
 		try {
-			int count = stmt.executeUpdate(sql);
-			//System.out.println("表中插入 " + count + " 条数据");
+			count = stmt.executeUpdate(sql);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("insert sql execute failed.", e);
 		}
+		
+		return count;
 	}
-	
+
 	/**
 	 * 插入数据记录，并输出插入的数据记录数
 	 * 
-	 * @param String
-	 *            sql语句
+	 * @param sqls
+	 *            List<String>,sql语句
 	 */
-	public void insertBatch(List<String> sqls) {
-		// Statement st = getStatement();
+	public int[] insertBatch(List<String> sqls) {
+		int[] counts = null;
 		try {
-			for(String sql:sqls){
+			for (String sql : sqls) {
 				stmt.addBatch(sql);
 			}
-			int[] count = stmt.executeBatch();
-			System.out.println("表中插入 " + count.length + " 种类的数据");
+			counts = stmt.executeBatch();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("insert sqls execute failed.", e);
 		}
+		
+		return counts;
 	}
 
 	/**
 	 * 更新符合要求的记录，并返回更新的记录数目
 	 * 
-	 * @param String
-	 *            sql语句
+	 * @param sql
+	 *            String,sql语句
 	 */
-	public void update(String sql) {
-		// Statement st = getStatement();
+	public int update(String sql) {
+		int count = 0;
 		try {
-			int count = stmt.executeUpdate(sql);// 执行更新操作的sql语句，返回更新数据的个数
-			System.out.println("表中更新 " + count + " 条数据"); // 输出更新操作的处理结果
+			count = stmt.executeUpdate(sql);// 执行更新操作的sql语句，返回更新数据的个数
+
 		} catch (SQLException e) {
-			System.out.println("更新数据失败");
+			logger.error("update sql execute failed.", e);
 		}
+		return count;
 	}
-	
 
 	/**
 	 * 执行ddl语句
 	 * 
-	 * @param String
-	 *            sql语句
+	 * @param sql
+	 *            String,sql语句
 	 */
 	public void excuteDDL(String sql) {
 		// Statement st = getStatement();
 		try {
 			stmt.execute(sql);// 执行更新操作的sql语句，返回更新数据的个数
-			System.out.println("执行sql语句成功"); // 输出更新操作的处理结果
+			logger.error("ddl sql:[{}] execute failed.", sql);
 		} catch (SQLException e) {
-			System.out.println("执行sql语句失败");
-			e.printStackTrace();
+			logger.error("ddl sql execute failed.", e);
 		}
 	}
 

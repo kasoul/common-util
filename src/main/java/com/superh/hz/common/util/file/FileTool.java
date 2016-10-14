@@ -41,7 +41,8 @@ public class FileTool {
 	/** 
      * 递归遍历一个目录下的所有真实文件
      * 
-     * @param File dirFile, List<File> fileList
+     * @param dirFile File, 目标目录
+     * @param fileList List<File>, 文件集合
      * @return 返回真实file，或null
      */  
 	public static List<File> getFilesFromDir(File dirFile, List<File> fileList){
@@ -70,7 +71,7 @@ public class FileTool {
      * 读取文件数据，每行转化为一个String
      * 处理空白字符串
      * 
-     * @param File dirFile
+     * @param file File，目标文件
      * @return List<String>，或null
      */  
 	public static List<String> getContentFromFile(File file ){
@@ -95,7 +96,7 @@ public class FileTool {
 	/** 
      * 读取文件数据，转化为一个String
      * 
-     * @param File dirFile
+     * @param file File，目标文件
      * @return String，或null
      */  
 	public static String getStringFromFile(File file ){
@@ -125,7 +126,7 @@ public class FileTool {
      * 读取文件数据，每行转化为一个String
      * 处理空白字符串
      * 
-     * @param File dirFile
+     * @param file File, 目标文件
      * @return List<String>，或null
      */  
 	public static String getBytesFromFile(File file ){
@@ -150,7 +151,7 @@ public class FileTool {
      * 读取文件数据，每行转化为一个String
      * 处理空白字符串
      * 
-     * @param String filepath:路径文件名
+     * @param filepath String, 路径文件名
      * @return List<String>，或null
      */  
 	public static List<String> getContentFromFile(String filepath){

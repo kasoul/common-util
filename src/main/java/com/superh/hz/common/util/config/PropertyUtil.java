@@ -64,8 +64,8 @@ public class PropertyUtil {
 	
 	/** 
      * 根据filePath，key来获取value
-     * @param String filePath，classpath下的路径文件名
-     * @param String key， key名
+     * @param filePath String, classpath下的路径文件名
+     * @param key String, key名
      * @return String 返回的value值 
      */  
 	public static String readValue(String filePath,String key) {
@@ -89,7 +89,7 @@ public class PropertyUtil {
 	
 	/** 
      * 根据filePath获取所有值
-     * @param String filePath，classpath下的路径文件名
+     * @param filePath String, classpath下的路径文件名
      * @return Map<String,String>，返回的value值 
      */  
 	public static  Map<String,String> readProperties(String filePath) {

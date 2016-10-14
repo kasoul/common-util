@@ -17,7 +17,7 @@ public class XlsxReader {
 
 	/** 
      * 获得第一张表所有内容
-     * @param File 文件名
+     * @param fileName String, 文件名
      * @return List<String[]> 第一张表的所有值
      */ 
 	public static List<String[]> readXlsx(String fileName) throws IOException {
@@ -56,7 +56,8 @@ public class XlsxReader {
 
 	/** 
      * 获得第一张表某一列的内容
-     * @param File 文件名,columnIndex 列序号
+     * @param fileName String, 文件名,\
+     * @param columnIndex int, 列序号
      * @return List<String> 一列的内容
      */ 
 	public static List<String> readXlsxOneColumnIndex(String fileName,int columnIndex) throws IOException {
@@ -95,7 +96,7 @@ public class XlsxReader {
 	}
 	
 	/** 
-     * 获取单元格cell的值，必须问本文类型
+     * 获取单元格cell的值，必须为本文类型
      */ 
 	@SuppressWarnings("static-access")
 	private static String getValue(XSSFCell xssfCell) {

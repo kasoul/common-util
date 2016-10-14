@@ -18,7 +18,6 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.superh.hz.common.util.config.PropertyUtil;
 
 /**
  * HTTP 获取网页地址
@@ -30,8 +29,8 @@ public class HttpUtil {
 	/**
 	 * get方式获取url内容,兼容重定向
 	 * 
-	 * @param String url,网址
-	 * @return String,网页内容
+	 * @param url String, 网址
+	 * @return String, 网页内容
 	 * @throws Exception
 	 */
 	public static String fetchGetURLContentRedirect(String url) throws Exception {
@@ -41,8 +40,8 @@ public class HttpUtil {
 	/**
 	 * get方式获取url内容
 	 * 
-	 * @param String url,网址
-	 * @return String,网页内容
+	 * @param url String, 网址
+	 * @return String, 网页内容
 	 * @throws Exception
 	 */
 	public static String fetchGetURLContent(String url) throws Exception {

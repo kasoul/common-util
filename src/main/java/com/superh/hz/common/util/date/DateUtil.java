@@ -22,9 +22,9 @@ public class DateUtil {
 	
 	/**
 	 * 获取计算起始、终止的日期
-	 * @param calDays 计算天数
-	 * @param calDate 计算起始日期
-	 * @return
+	 * @param calDays int, 计算天数
+	 * @param calDate String, 计算起始日期
+	 * @return String[], 计算起始、终止日期
 	 */
 	public static String[] getDateRange(int calDays, String calDate)
 	{		
