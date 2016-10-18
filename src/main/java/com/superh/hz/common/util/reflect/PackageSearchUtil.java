@@ -11,13 +11,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /**
- * 功能说明：解析java包，获取当前工程某包的所有类，并可以生成运行时对象Class<?> 成员属性 成员方法： static List<String>
- * getClassName(String packageName, boolean childPackage) static List<String>
- * getClassNameByFile(String filePath, List<String> className, boolean
- * childPackage) static List<String> getClassNameByJar(String jarPath, boolean
- * childPackage) static List<String> getClassNameByJars(URL[] urls, String
- * packagePath, boolean childPackage)
- * 
+ * 功能说明：解析java包，获取当前工程某包的所有类，并可以生成运行时对象Class<?> 
  * 2014-08-14
  */
 public class PackageSearchUtil {

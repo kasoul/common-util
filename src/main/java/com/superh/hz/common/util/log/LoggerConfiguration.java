@@ -13,7 +13,7 @@ public class LoggerConfiguration
 	
 	/**
 	 * 重载log4j配置文件，可使用项目外部配置
-	 * @param String log4jPath, log4j文件
+	 * @param log4jPath String, log4j文件
 	 */
 	public static void reLoadLogProperties(String log4jFile){
 		PropertyConfigurator.configure(log4jFile);
@@ -21,7 +21,7 @@ public class LoggerConfiguration
 	
 	/**
 	 * 设置日志等级
-	 * @param String level, 日志等级
+	 * @param level String, 日志等级
 	 */
 	public static void setLoggerLevel(String level)
 	{

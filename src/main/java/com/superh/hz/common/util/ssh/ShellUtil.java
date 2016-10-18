@@ -21,10 +21,10 @@ public class ShellUtil {
 	
 	/**
 	 * 后台执行命令
-	 * @param String command, 命令
-	 * @param String user,用户
-	 * @param String passwd,密码
-	 * @param String address,地址
+	 * @param command String, 命令
+	 * @param user String, 用户
+	 * @param passwd String, 密码
+	 * @param address String, 地址
 	 */
 	public static void nohupExecuteCommand(String command, String user, String passwd, String address) {
 		
@@ -34,11 +34,11 @@ public class ShellUtil {
 	
 	/**
 	 * 后台执行命令
-	 * @param String command, 命令
-	 * @param String user,用户
-	 * @param String passwd,密码
-	 * @param String address,地址
-	 * @param int port,端口
+	 * @param command String, 命令
+	 * @param user String, 用户
+	 * @param passwd String, 密码
+	 * @param address String, 地址
+	 * @param port int, 端口
 	 */
 	public static void nohupExecuteCommand(String command, String user, String passwd, String address, int port) {
 		if(!command.endsWith("&")){
@@ -91,10 +91,10 @@ public class ShellUtil {
 
 	/**
 	 * 执行命令
-	 * @param String command, 命令
-	 * @param String user,用户
-	 * @param String passwd,密码
-	 * @param String address,地址
+	 * @param command String, 命令
+	 * @param user String, 用户
+	 * @param passwd String, 密码
+	 * @param address String, 地址
 	 * @return List<StringBuffer>,标准输出和错误输出
 	 */
 	public static List<StringBuffer> executeCommand(String command, String user, String passwd, String address) {
@@ -105,11 +105,11 @@ public class ShellUtil {
 	
 	/**
 	 * 执行命令
-	 * @param String command, 命令
-	 * @param String user,用户
-	 * @param String passwd,密码
-	 * @param String address,地址
-	 * @param int port,端口
+	 * @param command String, 命令
+	 * @param user String, 用户
+	 * @param passwd String, 密码
+	 * @param address String, 地址
+	 * @param port int, 端口
 	 * @return List<StringBuffer>,标准输出和错误输出
 	 */
 	public static List<StringBuffer> executeCommand(String command, String user, String passwd, String address, int port) {

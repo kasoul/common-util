@@ -58,7 +58,6 @@ public class DESCoderReform {
 	 * @return 转换后的byte数组
 	 * @throws Exception
 	 *             本方法不处理任何异常，所有异常全部抛出
-	 * @author <a href="mailto:leo841001@163.com">LiGuoQing</a>
 	 */
 	public static byte[] hexStr2ByteArr(String strIn) throws Exception {
 		byte[] arrB = strIn.getBytes();
