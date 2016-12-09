@@ -2,13 +2,16 @@ package com.superh.hz.common.util.file;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -159,8 +162,32 @@ public class FileTool {
 		return getContentFromFile(file);
 	}
 	
+	/** 
+     * 读取文件数据，转化为一个String
+     * 
+     * @param String line，目标文件
+     * @param file File，目标文件
+     * @return String，或null
+     */  
+	public static void writeLine(String line,String filePath ){
+		try {
+			File file = new File(filePath);
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,true), "UTF-8"));
+			//BufferedReader reader = new BufferedReader(new FileReader(file));
+			writer.write(line);;
+			
+			writer.close();
+		} catch (IOException e) {
+			logger.error("io exception",e);
+		}
+		
+	}
+	
 	public static void main(String[] args) {
-		System.out.println(
-				getTrueFile("C:\\Users\\Administrator\\Desktop\\testdata\\test-io3.txt"));
+		
+		writeLine("aaaaaaa\n","C:\\Users\\Administrator\\Desktop\\testdata\\test-io3.txt");
+		writeLine("bbbbbbb\n","C:\\Users\\Administrator\\Desktop\\testdata\\test-io3.txt");
+		writeLine("ccccccc\n","C:\\Users\\Administrator\\Desktop\\testdata\\test-io3.txt");
+	
 	}
 }
