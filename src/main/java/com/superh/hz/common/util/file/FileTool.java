@@ -174,8 +174,8 @@ public class FileTool {
 			File file = new File(filePath);
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,true), "UTF-8"));
 			//BufferedReader reader = new BufferedReader(new FileReader(file));
-			writer.write(line);;
-			
+			writer.write(line);
+			writer.write("\n");
 			writer.close();
 		} catch (IOException e) {
 			logger.error("io exception",e);
